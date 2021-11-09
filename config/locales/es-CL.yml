@@ -1,0 +1,184 @@
+es-CL:
+  active_admin:
+    titles:
+      car_options: Marcas/Modelos/Autos
+      requests: Solicitudes
+    price_version:
+      upload_file: Actualizar Precios
+      success_upload: Actualización de precios exitosa
+      upload_error: El archivo no es .xls o .xlxs
+      update_message: Subir archivo con precios actualizados
+      hints_title: Instrucciones
+      file_import_hint_1: Descargar plantilla.
+      file_import_hint_2: "Modificar el valor de la columna 'X-Y' para actualizar el precio de una versión de un auto ('car_id') con un contrato de X meses con una distancia anual Y km. Por ejemplo, el valor para una fila determinada con columna '12-18.000' corresponde al precio de dicho auto con un plan de 12 meses y 18.0000 km anuales."
+      file_import_hint_3: "Si desea actualizar precios debe identificar la fila con el identificador de auto correspondiente ('car_id') y modificar o agregar el valor deseado."
+      file_import_hint_4: "Si desea agregar nuevos valores debe ingresar una nueva fila con el identificador de auto correspondiente ('car_id') e incluir los valores deseados."
+      file_import_hint_5: "<b>No</b> elimine la primera fila ya que esta contiene los títulos para actualizar y crear las versiones de precios."
+
+  activerecord:
+    models:
+      admin_user:
+        one: Usuario Administrador
+        other: Usuarios Administradores
+      price_version:
+        one: Versionamiento de Precio
+        other: Versionamiento de Precios
+      model:
+        one: Modelo
+        other: Modelos
+      car:
+        one: Auto
+        other: Autos
+      brand:
+        one: Marca
+        other: Marcas
+      image:
+        one: "Imágen"
+        other: "Imágenes"
+      reservation_request:
+        one: Solicitud de Reserva
+        other: Solicitudes de Reserva
+      frequent_question:
+        one: Pregunta Frecuente
+        other: Preguntas Frecuentes
+      characteristic:
+        one: Característica
+        other: Características
+      characteristing:
+        one: Asociación de Característica
+        other: Asociaciones de Características
+      car_model_request:
+        one: Solicitud de Modelo
+        other: Solictudes de Modelos
+      document:
+        one: Documento
+        other: Documentos
+    attributes:
+      timestamps: &timestamps
+        created_at: Fecha de creación
+        updated_at: Fecha último cambio
+      admin_user:
+        <<: *timestamps
+        email: Correo
+        current_sign_in_at: Fecha último ingreso
+        sign_in_count: Cantidad de ingresos
+        password: Clave
+      price_version:
+        <<: *timestamps
+        annual_distance: Distancia Anual (km)
+        contract_time: Tiempo de Contrato
+        monthly_price_cents: Precio Mensual
+        monthly_price_currency: Moneda
+        car: Auto
+      model:
+        <<: *timestamps
+        brand: Marca
+        name: Nombre
+        car_type: Tipo de Auto
+        characteristics: Características
+        cars: Autos
+        active: Activo
+      brand:
+        <<: *timestamps
+        name: Nombre
+        landing_view: Visualización en Landing
+      car:
+        <<: *timestamps
+        brand: Marca
+        model: Modelo
+        year: Año
+        shift: Caja de Cambios
+        fuel: Combustible
+        price_versions: Versiones de Precio
+        characteristics: Características
+        row_seats: Corridas de Asientos
+        airbags: Airbags
+        last_valid_date_prices: Precio Válido Hasta
+      reservation_request:
+        <<: *timestamps
+        car: Auto
+        email: Mail
+        first_name: Nombre
+        last_name: Apellido
+        contact_number: "Número de contacto"
+        kind: Tipo
+        comment: Comentario
+      frequent_question:
+        <<: *timestamps
+        question: Pregunta
+        answer: Respuesta
+        category: Categoría
+      characteristic:
+        <<: *timestamps
+        name: Nombre
+        category: Categoría
+      characteristing:
+        <<: *timestamps
+        characteristical: Caracterizable
+        characteristic: Característica
+      car_model_request:
+        <<: *timestamps
+        annual_distance: Distancia Anual (km)
+        contract_time: Tiempo de Contrato
+        brand: Nombre de la Marca
+        model: Nombre del Modelo
+        email: Mail
+        first_name: Nombre
+        last_name: Apellido
+        comment: Comentario
+        phone_number: Número de Teléfono
+      document:
+        <<: *timestamps
+        documentable_type: Tipo de Documentable
+        documentable: Documentable
+        document: Documento
+      image:
+        <<: *timestamps
+        imagable_type: Tipo de Modelo Asociado
+        imagable: Instancia del Tipo de Modelo
+        image_data: Información de la Imagen
+        image: Imagen
+    enums:
+      car:
+        shifts:
+          manual: Mecánico
+          automatic: Automático
+        fuels:
+          diesel: Diesel
+          benzine: Bencina
+        tractions:
+          front_wheel_drive: Tracción 4x2
+          all_wheel_drive: Tracción 4x4
+      model:
+        car_types:
+          pickup_truck: Camioneta
+          SUV: SUV
+          hatchback: Hatchback
+          sedan: Sedan
+          citycar: City car
+          comercial: Comercial
+      reservation_request:
+        kinds:
+          person: Persona
+          company: Empresa
+      characteristic:
+        categories:
+          comfort: Confort
+          multimedia: Multimedia
+          security: Seguridad
+      frequent_question:
+        categories:
+          contract_process: Contratación y Proceso de Suscripción
+          services: Sobre el Servicio de Nexcar
+          not_included_values: Valores No Considerados
+          end_of_contract: Término del Contrato
+          services_zones: Zonas de Servicio
+  reservation_request_mailer:
+    received:
+      subject: Solicitud Recibida
+  car_model_request_mailer:
+    received:
+      subject: Solicitud Recibida
+  controllers:
+    application_controller:
+      not_found_message: No encontramos lo que estás buscando
